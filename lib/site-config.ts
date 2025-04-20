@@ -11,8 +11,10 @@ export interface SiteConfig {
   language?: string
 
   twitter?: string
+  instagram?: string
   github?: string
   linkedin?: string
+  rednote?: string
   newsletter?: string
   youtube?: string
   zhihu?: string
