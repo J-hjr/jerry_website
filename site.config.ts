@@ -17,8 +17,7 @@ export default siteConfig({
   description: 'My Website',
 
   // social usernames (optional)
-  // twitter: 'transitive_bs',
-  instagram: 'we_are_simons',
+  twitter: 'transitive_bs',
   github: 'J-hjr',
   linkedin: 'jerry-huang-jh8186',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
