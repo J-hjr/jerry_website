@@ -90,6 +90,18 @@ export function FooterImpl() {
           </a>
         )}
 
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={`https://instagram.com/${config.instagram}`}
+            title={`Instagram @${config.instagram}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaInstagram />
+          </a>
+        )}
+        
         {config.github && (
           <a
             className={styles.github}
