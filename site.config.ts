@@ -48,7 +48,10 @@ export default siteConfig({
   // }
   pageUrlOverrides: {
     '/GenRec4Music': '1db6b9977e5e80888b40fa5178080f7c',
-    '/spotify-song-popularity-analysis': '1d36b9977e5e80bea714fa87dbfb914d'
+    '/spotify-song-popularity-analysis': '1d36b9977e5e80bea714fa87dbfb914d',
+    '/yelp-dataset-analysis': '1d66b9977e5e8019ba65da9e9fcf2b76',
+    '/my-music-playground': '1d36b9977e5e8045a9a7f632b83e1a6c',
+    '/smons-nyc': '1d36b9977e5e80df911fe335c05699db'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
