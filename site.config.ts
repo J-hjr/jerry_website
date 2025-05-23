@@ -46,7 +46,10 @@ export default siteConfig({
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null,
+  pageUrlOverrides: {
+    '/GenRec4Music': '1db6b9977e5e80888b40fa5178080f7c',
+    '/spotify-song-popularity-analysis': '1d36b9977e5e80bea714fa87dbfb914d'
+  },
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
