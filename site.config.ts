@@ -52,7 +52,9 @@ export default siteConfig({
     '/spotify-song-popularity-analysis': '1d36b9977e5e80bea714fa87dbfb914d',
     '/yelp-dataset-analysis': '1d66b9977e5e8019ba65da9e9fcf2b76',
     '/my-music-playground': '1d36b9977e5e8045a9a7f632b83e1a6c',
-    '/smons-nyc': '1d36b9977e5e80df911fe335c05699db'
+    '/smons-nyc': '1d36b9977e5e80df911fe335c05699db',
+    '/internship-at-irc': '2246b9977e5e80c28de3cbd9f854c9d6',
+    '/internship-at-rvng': '2246b9977e5e81f98a42f778cd3332c9'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
