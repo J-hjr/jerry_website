@@ -20,6 +20,7 @@ export default siteConfig({
   twitter: 'transitive_bs',
   github: 'J-hjr',
   linkedin: 'jerry-huang-jh8186',
+  instagram: 'itsnotjerryh',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
