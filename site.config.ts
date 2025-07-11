@@ -3,7 +3,7 @@ import { siteConfig } from './lib/site-config'
 export default siteConfig({
   // the site's root Notion page (required)
   rootNotionPageId: '1d36b9977e5e80e6b48df3619db2f1c1',
-
+  // rootNotionPageId: '2246b9977e5e80c28de3cbd9f854c9d6',
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
@@ -54,7 +54,11 @@ export default siteConfig({
     '/my-music-playground': '1d36b9977e5e8045a9a7f632b83e1a6c',
     '/smons-nyc': '1d36b9977e5e80df911fe335c05699db',
     '/internship-at-irc': '2246b9977e5e80c28de3cbd9f854c9d6',
-    '/internship-at-rvng': '2246b9977e5e81f98a42f778cd3332c9'
+    '/internship-at-rvng': '2246b9977e5e81f98a42f778cd3332c9',
+    '/Professional-experience-gallery': '2246b9977e5e81cd8007000ce9a4ba6d',
+    '/Project-experience': '1d36b9977e5e802d9ed8000cbc381b20',
+
+
   },
 
   // whether to use the default notion navigation style or a custom one with links to
@@ -68,11 +72,11 @@ export default siteConfig({
     },
     {
       title: 'Music',
-      pageId: '1d36b9977e5e80078145d8c35ddd24a0'
+      pageId: '1d36b9977e5e8045a9a7f632b83e1a6c'
     },
-    {
-      title: 'Projects',
-      pageId: ''
-    }
+    // {
+    //   title: 'Projects',
+    //   pageId: ''
+    // }
   ]
 })
