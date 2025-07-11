@@ -24,7 +24,7 @@ export function FooterImpl() {
   const currentYear = new Date().getFullYear()
 
   const onToggleDarkMode = React.useCallback(
-    (e) => {
+    (e: any) => {
       e.preventDefault()
       toggleDarkMode()
     },
