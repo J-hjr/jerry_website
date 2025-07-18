@@ -57,8 +57,8 @@ export default siteConfig({
     '/internship-at-rvng': '2246b9977e5e81f98a42f778cd3332c9',
     '/Professional-experience-gallery': '2246b9977e5e81cd8007000ce9a4ba6d',
     '/Project-experience': '1d36b9977e5e802d9ed8000cbc381b20',
-    '/new-LOrk': '22f6b9977e5e80e78debf6656bfc8988'
-
+    '/new-LOrk': '22f6b9977e5e80e78debf6656bfc8988',
+    '/music-therapy-research': '2346b9977e5e807cb9f9d6fdfda7e420'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
