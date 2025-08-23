@@ -9,8 +9,8 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Jerry Huang Personal Website',
-  domain: 'itsnotjerryh.com',
+  name: 'Jerry H.',
+  domain: 'jerryhjr.space',
   author: 'Jerry Huang',
 
   // open graph metadata (optional)
