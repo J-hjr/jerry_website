@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Jerry H.',
+  name: 'Jerry Huang',
   domain: 'jerryhjr.space',
   author: 'Jerry Huang',
 
