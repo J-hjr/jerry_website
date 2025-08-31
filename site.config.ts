@@ -62,7 +62,10 @@ export default siteConfig({
     '/music-therapy-research': '2346b9977e5e807cb9f9d6fdfda7e420',
     '/Music-Festival-at-nonelsesays': '2536b9977e5e80529bc6f38c4146618f',
     '/cashflow-forecasting': '2556b9977e5e80a3aeedd5a4e237ac54',
-    '/did': '25d6b9977e5e80999e6fcd7a23178446'
+    '/did': '25d6b9977e5e80999e6fcd7a23178446',
+    '/nyu-fingerstyle-club': '2606b9977e5e80dfa3e2de8dd012d64c',
+    '/terminal-5': '2606b9977e5e80e0ac5bff4660c6ee40',
+    '/band-competition-at-mercury-lounge': '2606b9977e5e808c985ee2ded72b3085',
   },
 
   // whether to use the default notion navigation style or a custom one with links to
