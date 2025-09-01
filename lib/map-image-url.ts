@@ -28,8 +28,8 @@ export const mapImageUrl = (url: string | undefined, block: Block) => {
         console.log('Enhanced Notion URL:', enhancedUrl)
       }
       return enhancedUrl
-    } catch (error) {
-      console.error('Error processing Notion image URL:', error)
+    } catch (err) {
+      console.error('Error processing Notion image URL:', err)
     }
   }
 
