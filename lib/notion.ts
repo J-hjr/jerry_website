@@ -30,7 +30,7 @@ const getNavigationLinkPages = pMemoize(
             chunkLimit: 1,
             fetchMissingBlocks: false,
             fetchCollections: true,
-            signFileUrls: false
+            signFileUrls: true
           }),
         {
           concurrency: 4
@@ -44,7 +44,8 @@ const getNavigationLinkPages = pMemoize(
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId, {
-    fetchCollections: true
+    fetchCollections: true,
+    signFileUrls: true
   })
 
   if (navigationStyle !== 'default') {
