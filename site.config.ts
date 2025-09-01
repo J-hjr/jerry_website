@@ -66,7 +66,7 @@ export default siteConfig({
     '/nyu-fingerstyle-club': '2606b9977e5e80dfa3e2de8dd012d64c',
     '/terminal-5': '2606b9977e5e80e0ac5bff4660c6ee40',
     '/band-competition-at-mercury-lounge': '2606b9977e5e808c985ee2ded72b3085',
-    '/gig-gallery': '2606b9977e5e816dbf3a000ce3fee68b'
+    '/gig-gallery': '2616b9977e5e81f899a1000c2073474d'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
