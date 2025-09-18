@@ -40,9 +40,39 @@
   margin-bottom: 1em;
 }
 
+/* 为视频前后的文字内容添加额外间距 */
+.notion-asset-wrapper-video + .notion-text,
+.notion-text + .notion-asset-wrapper-video {
+  margin-top: 2em !important;
+}
+
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 2em 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 确保视频容器有足够的间距 */
+.notion-asset-wrapper-video {
+  margin: 2em 0 !important;
+  padding: 0 !important;
+}
+
+/* 响应式视频设计 */
+@media only screen and (max-width: 768px) {
+  .notion-asset-wrapper-video > div,
+  .notion-asset-wrapper-video video {
+    margin: 1.5em 0 !important;
+    border-radius: 8px !important;
+  }
+  
+  .notion-asset-wrapper-video {
+    margin: 1.5em 0 !important;
+  }
 }
 
 .notion-header .notion-nav-header {
