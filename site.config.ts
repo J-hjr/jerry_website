@@ -68,7 +68,8 @@ export default siteConfig({
     '/band-competition-at-mercury-lounge': '2606b9977e5e808c985ee2ded72b3085',
     '/gig-gallery': '2616b9977e5e81f899a1000c2073474d',
     '/research-assistant-at-nyu-david-poeppl': '2636b9977e5e80f7bdd9f5b0b320ad78',
-    '/spotify-genre-classification-model': '2676b9977e5e80079c59dd96e8f34b13'
+    '/spotify-genre-classification-model': '2676b9977e5e80079c59dd96e8f34b13',
+    '/musicGoogle': '2c06b9977e5e80c39204d39fdbbbbd89'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
