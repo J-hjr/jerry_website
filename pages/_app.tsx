@@ -28,8 +28,6 @@ import {
   posthogId
 } from '@/lib/config'
 
-import { MusicPlayer } from '@/components/MusicPlayer'
-
 if (!isServer) {
   bootstrap()
 }
