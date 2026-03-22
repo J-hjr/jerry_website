@@ -28,6 +28,8 @@ import {
   posthogId
 } from '@/lib/config'
 
+import { MusicPlayer } from '@/components/MusicPlayer'
+
 if (!isServer) {
   bootstrap()
 }
@@ -61,5 +63,18 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+      {/* 音乐播放器 - 可以通过环境变量配置 */}
+      {process.env.NEXT_PUBLIC_SPOTIFY_TRACK_ID || process.env.NEXT_PUBLIC_AUDIO_URL ? (
+        <MusicPlayer
+          spotifyTrackId={process.env.NEXT_PUBLIC_SPOTIFY_TRACK_ID}
+          audioUrl={process.env.NEXT_PUBLIC_AUDIO_URL}
+          autoPlay={process.env.NEXT_PUBLIC_AUTO_PLAY_MUSIC === 'true'}
+          volume={parseFloat(process.env.NEXT_PUBLIC_MUSIC_VOLUME || '0.5')}
+        />
+      ) : null}
+    </>
+  )
 }
