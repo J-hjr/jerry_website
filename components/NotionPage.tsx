@@ -4,14 +4,23 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getBlockValue,
+  getPageProperty
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
   type NotionComponents,
-  NotionRenderer,
   useNotionContext
 } from 'react-notion-x'
+
+const NotionRenderer = dynamic(
+  () => import('react-notion-x').then((m) => m.NotionRenderer),
+  { ssr: false }
+)
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
@@ -34,9 +43,8 @@ import styles from './styles.module.css'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
-
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
+  import('react-notion-x/third-party/code').then(async (m) => {
     // add / remove any prism syntaxes here
     await Promise.allSettled([
       // @ts-expect-error Ignore prisma types
@@ -107,22 +115,20 @@ const Code = dynamic(() =>
 )
 
 const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
+  import('react-notion-x/third-party/collection').then((m) => m.Collection)
 )
 const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+  import('react-notion-x/third-party/equation').then((m) => m.Equation)
 )
 const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+  () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
   {
     ssr: false
   }
 )
 const Modal = dynamic(
   () =>
-    import('react-notion-x/build/third-party/modal').then((m) => {
+    import('react-notion-x/third-party/modal').then((m) => {
       m.Modal.setAppElement('.notion-viewport')
       return m.Modal
     }),
@@ -183,32 +189,34 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+const notionRendererComponents: Partial<NotionComponents> = {
+  nextLegacyImage: Image,
+  nextLink: Link,
+  Code,
+  Collection,
+  Equation,
+  Pdf,
+  Modal,
+  Tweet,
+  Header: NotionPageHeader,
+  propertyLastEditedTimeValue,
+  propertyTextValue,
+  propertyDateValue
+}
+
 export function NotionPage({
   site,
   recordMap,
   error,
   pageId
 }: types.PageProps) {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
   const router = useRouter()
   const lite = useSearchParam('lite')
-
-  const components = React.useMemo<Partial<NotionComponents>>(
-    () => ({
-      nextLegacyImage: Image,
-      nextLink: Link,
-      Code,
-      Collection,
-      Equation,
-      Pdf,
-      Modal,
-      Tweet,
-      Header: NotionPageHeader,
-      propertyLastEditedTimeValue,
-      propertyTextValue,
-      propertyDateValue
-    }),
-    []
-  )
 
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
@@ -224,7 +232,7 @@ export function NotionPage({
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]!]?.value
+  const block = getBlockValue(recordMap?.block?.[keys[0]!])
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -245,13 +253,11 @@ export function NotionPage({
     [block, recordMap, isBlogPost]
   )
 
-  const footer = React.useMemo(() => <Footer />, [])
-
   if (router.isFallback) {
     return <Loading />
   }
 
-  if (error || !site || !block) {
+  if (error || !site || !block || !recordMap) {
     return <Page404 site={site} pageId={pageId} error={error} />
   }
 
@@ -288,6 +294,8 @@ export function NotionPage({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+  const safeIsLiteMode = mounted && isLiteMode
+  const safeIsDarkMode = mounted && isDarkMode
   return (
     <>
       <PageHead
@@ -299,21 +307,20 @@ export function NotionPage({
         url={canonicalPageUrl}
         isBlogPost={isBlogPost}
       />
-
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {safeIsLiteMode && <BodyClassName className='notion-lite' />}
+      {safeIsDarkMode && <BodyClassName className='dark-mode' />}
 
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+          pageId === site.rootNotionPageId && 'index-page',
         )}
-        darkMode={isDarkMode}
-        components={components}
+        darkMode={safeIsDarkMode}
+        components={notionRendererComponents}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
-        fullPage={!isLiteMode}
+        fullPage={!safeIsLiteMode}
         previewImages={!!recordMap.preview_images}
         showCollectionViewDropdown={true}
         showTableOfContents={showTableOfContents}
@@ -325,7 +332,7 @@ export function NotionPage({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : undefined}
         pageAside={pageAside}
-        footer={footer}
+        footer={<Footer />}
       />
 
       <GitHubShareButton />
