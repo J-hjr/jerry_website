@@ -14,9 +14,13 @@ import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
   type NotionComponents,
-  NotionRenderer,
   useNotionContext
 } from 'react-notion-x'
+
+const NotionRenderer = dynamic(
+  () => import('react-notion-x').then((m) => m.NotionRenderer),
+  { ssr: false }
+)
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
@@ -39,7 +43,6 @@ import styles from './styles.module.css'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
-
 const Code = dynamic(() =>
   import('react-notion-x/third-party/code').then(async (m) => {
     // add / remove any prism syntaxes here
@@ -207,6 +210,11 @@ export function NotionPage({
   error,
   pageId
 }: types.PageProps) {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -286,6 +294,8 @@ export function NotionPage({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+  const safeIsLiteMode = mounted && isLiteMode
+  const safeIsDarkMode = mounted && isDarkMode
   return (
     <>
       <PageHead
@@ -297,21 +307,20 @@ export function NotionPage({
         url={canonicalPageUrl}
         isBlogPost={isBlogPost}
       />
-
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {safeIsLiteMode && <BodyClassName className='notion-lite' />}
+      {safeIsDarkMode && <BodyClassName className='dark-mode' />}
 
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+          pageId === site.rootNotionPageId && 'index-page',
         )}
-        darkMode={isDarkMode}
+        darkMode={safeIsDarkMode}
         components={notionRendererComponents}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
-        fullPage={!isLiteMode}
+        fullPage={!safeIsLiteMode}
         previewImages={!!recordMap.preview_images}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}
