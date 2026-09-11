@@ -69,7 +69,7 @@
     margin: 1.5em 0 !important;
     border-radius: 8px !important;
   }
-  
+
   .notion-asset-wrapper-video {
     margin: 1.5em 0 !important;
   }
@@ -432,6 +432,6 @@
   color: var(--fg-color-2);
 }
 
-.notion-equation.notion-equation-block{
+.notion-equation.notion-equation-block {
   align-items: center;
 }
