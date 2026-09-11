@@ -17,7 +17,6 @@ export default siteConfig({
   description: 'My Website',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
   github: 'J-hjr',
   linkedin: 'jerry-huang-jh8186',
   // instagram: 'itsnotjerryh',
@@ -58,16 +57,17 @@ export default siteConfig({
     '/Returning-Fall-Internship-RVNG': '25a6b9977e5e802289bbf3efc3659274',
     // '/Professional-experience-gallery': '2246b9977e5e81cd8007000ce9a4ba6d',
     // '/Project-experience': '1d36b9977e5e802d9ed8000cbc381b20',
-    '/new-LOrk': '22f6b9977e5e80e78debf6656bfc8988',
-    '/music-therapy-research': '2346b9977e5e807cb9f9d6fdfda7e420',
-    '/Music-Festival-at-nonelsesays': '2536b9977e5e80529bc6f38c4146618f',
+    // '/new-LOrk': '22f6b9977e5e80e78debf6656bfc8988',
+    // '/music-therapy-research': '2346b9977e5e807cb9f9d6fdfda7e420',
+    // '/Music-Festival-at-nonelsesays': '2536b9977e5e80529bc6f38c4146618f',
     '/cashflow-forecasting': '2556b9977e5e80a3aeedd5a4e237ac54',
-    '/did': '25d6b9977e5e80999e6fcd7a23178446',
+    // '/did': '25d6b9977e5e80999e6fcd7a23178446',
     '/nyu-fingerstyle-club': '2606b9977e5e80dfa3e2de8dd012d64c',
     '/terminal-5': '2606b9977e5e80e0ac5bff4660c6ee40',
     '/band-competition-at-mercury-lounge': '2606b9977e5e808c985ee2ded72b3085',
     // '/gig-gallery': '2616b9977e5e81f899a1000c2073474d',
-    '/research-assistant-at-nyu-david-poeppl': '2636b9977e5e80f7bdd9f5b0b320ad78',
+    '/research-assistant-at-nyu-david-poeppl':
+      '2636b9977e5e80f7bdd9f5b0b320ad78',
     '/spotify-genre-classification-model': '2676b9977e5e80079c59dd96e8f34b13',
     '/musicGoogle': '2c06b9977e5e80c39204d39fdbbbbd89'
   },
@@ -84,7 +84,7 @@ export default siteConfig({
     {
       title: 'Music',
       pageId: '1d36b9977e5e8045a9a7f632b83e1a6c'
-    },
+    }
     // {
     //   title: 'Projects',
     //   pageId: ''
